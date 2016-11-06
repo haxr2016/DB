@@ -9,11 +9,11 @@ public class Application extends Controller {
 
     public static Result index() {
 
-        return ok(index.render("Your new application is ready."));
+        return ok(index.render("Yo application is ready."));
     }
 
     public  static Result list() {
-        return ok(index.render("your list not implemented yet"));
+        return ok(index.render("your list nt implemented yet"));
     }
 
     public static Result update() {
