@@ -9,7 +9,7 @@ public class Application extends Controller {
 
     public Result index() {
 
-        return ok(index.render("Yo application is ready."));
+        return ok(index.render("Your application is ready."));
     }
 
     public Result list() {
