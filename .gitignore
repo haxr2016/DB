@@ -1,12 +1,13 @@
 logs
 project/project
 project/target
-target
+target/
 tmp
 .history
 dist
-/.idea
-/*.iml
+.idea/
+*.iml
+build/
 /out
 /.idea_modules
 /.classpath
