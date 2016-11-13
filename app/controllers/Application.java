@@ -25,7 +25,7 @@ public class Application extends Controller {
     }
 
     public Result update() {
-        return ok(index.render("ur update is not implemented yet"));
+        return ok(index.render("ur update is not implemented yet again"));
     }
 
 
