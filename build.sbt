@@ -8,7 +8,9 @@ scalaVersion := "2.11.7"
 
 libraryDependencies ++= Seq( javaJdbc ,  cache , javaWs )
 
-libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.18"
+//libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.18"
+
+libraryDependencies += "com.oracle" % "ojdbc6" % "12.1.0.1-atlassian-hosted"
 
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  
 

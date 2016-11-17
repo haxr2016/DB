@@ -55,7 +55,6 @@ public class Application extends Controller {
     public Result list() {
         return ok(index.render("your list nt implemented yet"));
 
-
     }
 
     public Result update() {
