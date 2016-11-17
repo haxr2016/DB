@@ -13,4 +13,5 @@ GET        /list                controllers.Application.list
 
 GET        /update              controllers.Application.update
 
+GET        /login               controllers.Application.login
     
