@@ -128,13 +128,7 @@ public class ProductController extends Controller {
         JsonNode json = request().body().asJson();
         Product product = Json.fromJson(json,Product.class);
 
-        //ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        //String json = null;
-        //try {
-        //    json = ow.writeValueAsString(product);
-        //} catch (JsonProcessingException e) {
-          //  e.printStackTrace();
-       // }
+
         JPA.em().persist(product);
         return ok("inserted");
 
