@@ -21,12 +21,7 @@ public class Application extends Controller {
 
 
 
-    @Transactional
-    public Result getProduct() {
-        List<Product> product = ProductController.getAllProductsFromRepo();
-        return ok(play.libs.Json.toJson(product));
 
-    }
 
     @Transactional
 
