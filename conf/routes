@@ -9,3 +9,7 @@ GET        /                    controllers.Application.home
 GET        /assets/*file        controllers.Assets.at(path="/public", file)
 
 GET        /login               controllers.Application.login
+
+GET        /getproduct          controllers.Application.getProduct
+
+POST        /addproduct           controllers.ProductController.addProduct

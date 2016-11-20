@@ -1,20 +1,37 @@
 package controllers;
 
 
-import org.h2.engine.User;
+import models.Product;
 import play.db.jpa.Transactional;
 import play.mvc.*;
 
 import play.twirl.api.Html;
 import views.html.*;
 
-import java.sql.Connection;
-import java.text.Normalizer;
+import java.util.List;
 
 
 public class Application extends Controller {
 
-    public Result login() {
+ /*   @Transactional
+    public Result getcnames() {
+        List<Product> product = ProductController.colname(sessionFactoryBean);
+        return ok(String.valueOf(product));
+    } */
+
+
+
+    @Transactional
+    public Result getProduct() {
+        List<Product> product = ProductController.getAllProductsFromRepo();
+        return ok(play.libs.Json.toJson(product));
+
+    }
+
+    @Transactional
+
+
+   public Result login() {
         return ok(login.render());
     }
 
@@ -34,6 +51,7 @@ public class Application extends Controller {
     }
 
     public Result prodDetails() {
+
         return ok(proddetails.render());
     }
 

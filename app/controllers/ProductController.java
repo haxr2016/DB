@@ -1,8 +1,18 @@
 package controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import models.Category;
 import models.Product;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.mapping.Column;
+import org.hibernate.mapping.PersistentClass;
+import org.hibernate.metadata.ClassMetadata;
 import play.Logger;
 import play.data.Form;
 import play.data.format.Formatters;
@@ -13,7 +23,10 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 
+
 import javax.persistence.TypedQuery;
+import java.net.URI;
+import java.security.DomainLoadStoreParameter;
 import java.util.List;
 import java.util.Locale;
 
@@ -85,7 +98,7 @@ public class ProductController extends Controller {
 	
 
 	@Transactional
-    private static List<Product> getAllProductsFromRepo() {
+	public static List<Product> getAllProductsFromRepo() {
 		return getAllProductsFromRepo(null);
 	}
 	
@@ -100,10 +113,34 @@ public class ProductController extends Controller {
     		return query.setParameter("cat", category).getResultList();
     	}
     }
+
+
 	
 	@Transactional
     private static Product getProductFromRepo(int id) {
     	Product product = JPA.em().find(Product.class, id);
     	return product;
     }
+
+
+    @Transactional
+    public Result addProduct() {
+        JsonNode json = request().body().asJson();
+        Product product = Json.fromJson(json,Product.class);
+
+        //ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        //String json = null;
+        //try {
+        //    json = ow.writeValueAsString(product);
+        //} catch (JsonProcessingException e) {
+          //  e.printStackTrace();
+       // }
+        JPA.em().persist(product);
+        return ok("inserted");
+
+    }
+
+
+
 }
+
