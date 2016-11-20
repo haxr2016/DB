@@ -121,6 +121,17 @@ public class ProductController extends Controller {
     }
 
 
+
+    //HTTP METHODS
+
+    @Transactional
+    public Result getProduct() {
+        List<Product> product = ProductController.getAllProductsFromRepo();
+        return ok(play.libs.Json.toJson(product));
+
+    }
+
+
     @Transactional
     public Result addProduct() {
         JsonNode json = request().body().asJson();
@@ -130,16 +141,10 @@ public class ProductController extends Controller {
 
     }
 
-    @Transactional
-    public Result getProduct() {
-        List<Product> product = ProductController.getAllProductsFromRepo();
-        return ok(play.libs.Json.toJson(product));
-
-    }
-
+    //NOT WORKING YET-SHOULD CHECK INTO IT
     @Transactional
     public Result update(int id) {
-        JsonNode json = request().body().asJson();
+       /* JsonNode json = request().body().asJson();
         //remove the product with id
         Product product = JPA.em().find(Product.class, id);
         JPA.em().remove(product);
@@ -148,7 +153,32 @@ public class ProductController extends Controller {
         Product product_update = Json.fromJson(json, Product.class);
         JPA.em().merge(product_update);
         return ok(play.libs.Json.toJson(product_update));
+        */
+        JsonNode json = request().body().asJson();
+        Product pro = JPA.em().find(Product.class, id);
+        Product product_update = Json.fromJson(json, Product.class);
+        /*if(pro == null){
+            throw new IllegalArgumentException("Unknown Employee id");
+        }*/
+
+        JPA.em().merge(pro);
+        JPA.em().flush();
+        return ok(play.libs.Json.toJson(pro));
     }
+
+    @Transactional
+    public Result deleteproduct(int id) {
+        Product product = JPA.em().find(Product.class, id);
+        JPA.em().remove(product);
+        return ok("deleted");
+
+    }
+
+
+
+
+
+
 }
 
 

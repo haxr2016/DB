@@ -15,3 +15,5 @@ GET        /getproduct          controllers.ProductController.getProduct
 POST        /addproduct           controllers.ProductController.addProduct
 
 PUT         /updateproduct/:id          controllers.ProductController.update(id: Integer)
+
+DELETE      /deleteproduct/:id          controllers.ProductController.deleteproduct(id: Integer)
