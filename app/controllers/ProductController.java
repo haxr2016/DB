@@ -72,7 +72,7 @@ public class ProductController extends Controller {
 
 
     @Transactional
-    @Security.Authenticated(StaffAuthenticator.class)
+   // @Security.Authenticated(StaffAuthenticator.class)
     public static Result newProduct() {
 
         Formatters.register(Category.class, new Formatters.SimpleFormatter<Category>() {

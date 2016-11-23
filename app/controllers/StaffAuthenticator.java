@@ -1,4 +1,4 @@
-package controllers;
+/*package controllers;
 
 import models.User;
 import play.mvc.Http;
@@ -18,4 +18,4 @@ public class StaffAuthenticator extends MyAuthenticator {
 		
 	}
 	
-}
+}*/

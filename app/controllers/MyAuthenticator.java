@@ -2,7 +2,7 @@ package controllers;
 
 import play.mvc.Http;
 import play.mvc.Result;
-import views.html.fourOFour;
+import views.html.*;
 
 public class MyAuthenticator extends play.mvc.Security.Authenticator {
 

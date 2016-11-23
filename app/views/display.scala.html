@@ -1,0 +1,8 @@
+@(pro: List[Product])
+
+@for(prod <- pro){
+    <div class="pro-item">
+        <h2>@prod.getName</h2>
+        <p>@prod.getProduct_id</p>
+    </div>
+}
